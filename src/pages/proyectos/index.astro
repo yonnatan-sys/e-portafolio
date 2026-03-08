@@ -1,0 +1,383 @@
+---
+const nombre = "Yonnatan";
+const proyectos = [
+    {
+        titulo: "E-commerce Deportivo",
+        descripcion: "Plataforma completa de venta de artículos deportivos con carrito, pagos y panel administrativo.",
+        tecnologias: ["Astro", "React", "Tailwind", "Node.js"],
+        link: "#",
+        color: "from-blue-500 to-cyan-400",
+        icono: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>`
+    },
+    {
+        titulo: "Dashboard Financiero",
+        descripcion: "Aplicación web para visualizar y analizar datos financieros en tiempo real con gráficos interactivos.",
+        tecnologias: ["Vue.js", "Chart.js", "Firebase"],
+        link: "#",
+        color: "from-emerald-400 to-teal-500",
+        icono: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`
+    },
+    {
+        titulo: "App de Productividad",
+        descripcion: "Gestor de tareas al estilo Kanban con temporizador Pomodoro integrado y sincronización en la nube.",
+        tecnologias: ["React Native", "TypeScript", "Supabase"],
+        link: "#",
+        color: "from-purple-500 to-pink-500",
+        icono: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`
+    },
+    {
+        titulo: "Sistema Escolar",
+        descripcion: "Plataforma para gestión de alumnos, notas, y asistencia para escuelas primarias.",
+        tecnologias: ["PHP", "Laravel", "MySQL"],
+        link: "#",
+        color: "from-orange-400 to-amber-500",
+        icono: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>`
+    }
+];
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos | {nombre}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Mis proyectos y actividades destacadas">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+
+    <nav class="navbar">
+        <a href="/presentacion" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Volver a Presentación
+        </a>
+    </nav>
+
+    <main class="container">
+        <header class="header">
+            <h1 class="title">Mis <span class="highlight">Proyectos</span></h1>
+            <p class="subtitle">Una colección de aplicaciones web, actividades y trabajos recientes que he desarrollado.</p>
+        </header>
+
+        <div class="projects-grid">
+            {proyectos.map((proyecto, index) => (
+                <article class="project-card" style={`--animation-order: ${index}`}>
+                    <div class="card-glow" class:list={[proyecto.color.split(' ')[0].replace('from-', 'bg-')]} ></div>
+                    
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="icon-box" set:html={proyecto.icono} />
+                            <h2 class="project-title">{proyecto.titulo}</h2>
+                        </div>
+                        
+                        <p class="project-desc">{proyecto.descripcion}</p>
+                        
+                        <div class="tech-stack">
+                            {proyecto.tecnologias.map(tech => (
+                                <span class="tech-tag">{tech}</span>
+                            ))}
+                        </div>
+                        
+                        <a href={proyecto.link} class="btn-view">
+                            Ver detalles
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </main>
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(30, 41, 59, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Nav */
+        .navbar {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Background */
+        .background-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at top left, #1e1b4b 0%, var(--bg-color) 70%);
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.5;
+            animation: float 15s infinite alternate ease-in-out;
+        }
+
+        .shape-1 {
+            background: #4f46e5;
+            width: 50vw;
+            height: 50vw;
+            top: -20vh;
+            right: -10vw;
+        }
+
+        .shape-2 {
+            background: #0ea5e9;
+            width: 40vw;
+            height: 40vw;
+            bottom: -20vh;
+            left: -10vw;
+            animation-delay: -7s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .header {
+            text-align: left;
+            animation: slideInDown 0.8s ease-out backwards;
+            max-width: 700px;
+            margin-top: 1rem;
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Cards */
+        .project-card {
+            position: relative;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeUp 0.6s ease-out backwards;
+            animation-delay: calc(var(--animation-order) * 0.15s + 0.3s);
+            display: flex;
+            flex-direction: column;
+            min-height: 320px;
+            backdrop-filter: blur(12px);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ambient glow effect */
+        .card-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--glass-hover);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card:hover .card-glow {
+            opacity: 1;
+        }
+
+        .card-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            z-index: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .project-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        /* Tags */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.35rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+        }
+
+        .project-card:hover .tech-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Action Button */
+        .btn-view {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+
+        .btn-view:hover {
+            background: white;
+            color: #0f172a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem 4rem;
+                gap: 3rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .card-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</body>
+</html>
